@@ -1,6 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+쿠키런 오븐브레이크 패키지(현질)효율 계산기
 
-## Getting Started
+## 재화
+
+```
+크리스탈 = 1.1원
+
+무지개큐브 = 2.2원
+
+코인 = 계산안함
+```
+
+## 인게임 상품
+
+```
+# 성장재화
+
+쿠키 물약 = 45 크리스탈 = 49.5원
+
+펫 물약 = 30 크리스탈 = 33원
+
+레전더리 쿠키 물약 = 3600 크리스탈 = 3960원
+
+레전더리 펫 물약 = 2400 크리스탈 = 2640원
+
+# 보물
+
+스페셜 10 + 1 보물보증서 = 1900 크리스탈 = 2090원
+
+확정 에픽 보물 = 5000 크리스탈 = 5500원
+
+확정 레전더리 보물 = 8000 크리스탈 = 8800원
+
+# 스킨
+
+스킨 묶음 뽑기 티켓 = 1900 무지개 큐브 = 4180원
+
+
+여기 없는 재화들은 별로 중요하지 않아서 추가하지 않았슴 ㅎㅎ;
+
+```
+
+## 실행
 
 First, run the development server:
 
@@ -11,28 +51,3 @@ yarn dev
 # or
 pnpm dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
