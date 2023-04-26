@@ -43,18 +43,38 @@ export default function Product({ name, price, image, id }: ProductInterface) {
       <button
         onClick={onCheck}
         className={classNameHandler(
-          "flex flex-col items-center justify-center gap-2 py-3 my-1 bg-blue-300 rounded-lg w-36",
+          "flex flex-col items-center justify-center py-3  bg-blue-300 rounded-lg w-40 transition-all duration-100",
           checkedProduct.findIndex((product) => {
             return product.name === name;
           }) !== -1
-            ? "bg-blue-500"
+            ? "bg-blue-400 scale-95"
             : "bg-blue-300"
         )}
       >
-        <div className="relative w-11 h-11 ">
+        <div
+          className={classNameHandler(
+            checkedProduct.findIndex((product) => {
+              return product.name === name;
+            }) !== -1
+              ? ""
+              : "",
+            "relative w-10 h-10 "
+          )}
+        >
           <Image src={image} alt={name} fill object-fit="cover" priority />
         </div>
-        <span className="text-sm">{name}</span>
+        <span
+          className={classNameHandler(
+            checkedProduct.findIndex((product) => {
+              return product.name === name;
+            }) !== -1
+              ? "text-gray-200"
+              : "text-gray-100",
+            "text-sm mt-[2px]"
+          )}
+        >
+          {name}
+        </span>
       </button>
     </>
   );

@@ -11,8 +11,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center">
-        <div className="grid grid-cols-2 gap-4 mt-10 bg-red-300 ">
+      <div className="flex justify-center w-full">
+        <div className="grid grid-cols-2 p-2 mt-5 bg-red-300 gap-y-4 gap-x-8 ">
           {data.productData.map((product) => (
             <div key={product.name}>
               <Product
@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex flex-col justify-center mt-10 ">
         {checkedProduct.map((product) => {
           return (
             <CalculateListProduct
