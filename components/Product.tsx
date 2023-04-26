@@ -1,4 +1,5 @@
 import { checkedProducts } from "@/atoms";
+import { classNameHandler } from "@/utils/client";
 import { spawn } from "child_process";
 import Image from "next/image";
 import React from "react";
@@ -39,7 +40,14 @@ export default function Product({ name, price, image }: ProductInterface) {
     <>
       <button
         onClick={onCheck}
-        className="flex flex-col items-center justify-center gap-2 py-3 my-1 bg-blue-300 rounded-lg w-36"
+        className={classNameHandler(
+          "flex flex-col items-center justify-center gap-2 py-3 my-1 bg-blue-300 rounded-lg w-36",
+          checkedProduct.findIndex((product) => {
+            return product === name;
+          }) !== -1
+            ? "bg-blue-500"
+            : "bg-blue-300"
+        )}
       >
         <div className="relative w-11 h-11 ">
           <Image src={image} alt={name} fill object-fit="cover" priority />
