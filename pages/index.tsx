@@ -11,33 +11,34 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center w-full">
-        <div className="grid grid-cols-2 p-2 mt-5 bg-red-300 gap-y-4 gap-x-8 ">
-          {data.productData.map((product) => (
-            <div key={product.name}>
-              <Product
+      <div className="w-full pb-20 bg-blue-100">
+        <div className="flex justify-center ">
+          <div className="grid grid-cols-2 p-2 mt-5 gap-y-4 gap-x-8 ">
+            {data.productData.map((product) => (
+              <div key={product.name}>
+                <Product
+                  id={product.id}
+                  price={product.price}
+                  image={product.image}
+                  name={product.name}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col justify-center mt-10">
+          {checkedProduct.map((product) => {
+            return (
+              <CalculateListProduct
+                key={product.id}
                 id={product.id}
                 price={product.price}
                 image={product.image}
                 name={product.name}
               />
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </div>
-
-      <div className="flex flex-col justify-center mt-10 ">
-        {checkedProduct.map((product) => {
-          return (
-            <CalculateListProduct
-              key={product.id}
-              id={product.id}
-              price={product.price}
-              image={product.image}
-              name={product.name}
-            />
-          );
-        })}
       </div>
     </>
   );

@@ -43,7 +43,7 @@ export default function Product({ name, price, image, id }: ProductInterface) {
       <button
         onClick={onCheck}
         className={classNameHandler(
-          "flex flex-col items-center justify-center py-3  bg-blue-300 rounded-lg w-40 transition-all duration-100",
+          "flex flex-col items-center justify-center py-4  bg-blue-300 rounded-lg w-40 transition-all duration-100",
           checkedProduct.findIndex((product) => {
             return product.name === name;
           }) !== -1
