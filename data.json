@@ -1,0 +1,64 @@
+{
+  "productData": [
+    {
+      "id": 0,
+      "name": "크리스탈",
+      "price": 1.1,
+      "image": "/crystar.png"
+    },
+    {
+      "id": 1,
+      "name": "무지개큐브",
+      "price": 2.2,
+      "image": "/rainbow_cube.png"
+    },
+    {
+      "id": 2,
+      "name": "쿠키 물약",
+      "price": 49.5,
+      "image": "/cookie_potion.png"
+    },
+    {
+      "id": 3,
+      "name": "펫 물약",
+      "price": 33,
+      "image": "/pet_potion.png"
+    },
+    {
+      "id": 4,
+      "name": "레전더리 쿠키 물약",
+      "price": 3960,
+      "image": "/legend_cookie_potion.png"
+    },
+    {
+      "id": 5,
+      "name": "레전더리 펫 물약",
+      "price": 2640,
+      "image": "/legend_pet_potion.png"
+    },
+    {
+      "id": 6,
+      "name": "스페셜 보믈 보증서",
+      "price": 2090,
+      "image": "/special_tr_ticket.png"
+    },
+    {
+      "id": 7,
+      "name": "확정 에픽 보물",
+      "price": 5500,
+      "image": "/epic_tr.png"
+    },
+    {
+      "id": 8,
+      "name": "확정 레전더리 보물",
+      "price": 8000,
+      "image": "/legend_tr.png"
+    },
+    {
+      "id": 9,
+      "name": "쿠키스킨 묶음 뽑기 티켓",
+      "price": 3960,
+      "image": "/costume_bundle.png"
+    }
+  ]
+}

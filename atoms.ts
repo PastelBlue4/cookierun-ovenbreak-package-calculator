@@ -1,6 +1,13 @@
 import { atom } from "recoil";
 
-export const checkedProducts = atom({
+interface ProductInterface {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
+
+export const checkedProducts = atom<ProductInterface[]>({
   key: "checkedProducts",
-  default: ["크리스탈"],
+  default: [],
 });

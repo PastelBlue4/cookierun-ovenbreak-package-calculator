@@ -6,22 +6,22 @@ import React from "react";
 import { useRecoilState } from "recoil";
 
 interface ProductInterface {
+  id: number;
   name: string;
   price: number;
   image: string;
 }
 
-export default function Product({ name, price, image }: ProductInterface) {
+export default function Product({ name, price, image, id }: ProductInterface) {
   const [checkedProduct, setCheckedProduct] = useRecoilState(checkedProducts);
   const onCheck = () => {
     const targetProductIndex = checkedProduct.findIndex(
-      (product) => product === name
+      (product) => product.name === name
     );
 
     console.log(targetProductIndex);
 
     if (targetProductIndex !== -1) {
-      console.log("nothing");
       setCheckedProduct((oldProductList) => {
         return [
           ...oldProductList.slice(0, targetProductIndex),
@@ -31,8 +31,10 @@ export default function Product({ name, price, image }: ProductInterface) {
     }
 
     if (targetProductIndex === -1) {
-      console.log("new one");
-      setCheckedProduct((oldProductList) => [...oldProductList, name]);
+      setCheckedProduct((oldProductList) => [
+        ...oldProductList,
+        { name, price, id, image },
+      ]);
     }
   };
 
@@ -43,7 +45,7 @@ export default function Product({ name, price, image }: ProductInterface) {
         className={classNameHandler(
           "flex flex-col items-center justify-center gap-2 py-3 my-1 bg-blue-300 rounded-lg w-36",
           checkedProduct.findIndex((product) => {
-            return product === name;
+            return product.name === name;
           }) !== -1
             ? "bg-blue-500"
             : "bg-blue-300"
