@@ -56,9 +56,21 @@
     },
     {
       "id": 9,
-      "name": "쿠키스킨 묶음 뽑기 티켓",
+      "name": "쿠키 스킨 묶음 뽑기",
       "price": 3960,
       "image": "/costume_bundle.png"
+    },
+    {
+      "id": 9,
+      "name": "젤리 스킨 묶음 뽑기",
+      "price": 2420,
+      "image": "/jelly_costume_ticket.png"
+    },
+    {
+      "id": 10,
+      "name": "슈퍼에픽 확정 스킨 뽑기",
+      "price": 5056,
+      "image": "/super_epic_costume.png"
     }
   ]
 }
