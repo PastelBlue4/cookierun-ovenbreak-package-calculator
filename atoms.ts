@@ -11,3 +11,15 @@ export const checkedProducts = atom<ProductInterface[]>({
   key: "checkedProducts",
   default: [],
 });
+
+interface CalculationDataInterface {
+  products: {
+    product: ProductInterface;
+    quantity: number;
+  };
+}
+
+export const calculationData = atom<CalculationDataInterface[]>({
+  key: "calculationData",
+  default: [],
+});

@@ -19,7 +19,7 @@ export default function CalculateListProduct({
     <>
       <div className="flex flex-col w-40 ml-2">
         <div className="relative ml-2 w-11 h-11">
-          <Image src={image} alt={name} fill object-fit="cover" priority />
+          <Image src={image} alt={name} fill object-fit="cover" />
         </div>
         <span className="">{name}</span>
       </div>

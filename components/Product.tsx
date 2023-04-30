@@ -1,6 +1,5 @@
 import { checkedProducts } from "@/atoms";
 import { classNameHandler } from "@/utils/client";
-import { spawn } from "child_process";
 import Image from "next/image";
 import React from "react";
 import { useRecoilState } from "recoil";
@@ -61,7 +60,7 @@ export default function Product({ name, price, image, id }: ProductInterface) {
             "relative w-10 h-10 "
           )}
         >
-          <Image src={image} alt={name} fill object-fit="cover" priority />
+          <Image src={image} alt={name} fill object-fit="cover" key={id} />
         </div>
         <span
           className={classNameHandler(
