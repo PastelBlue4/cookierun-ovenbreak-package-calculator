@@ -5,13 +5,12 @@ import { useRecoilState } from "recoil";
 
 import data from "@/data.json";
 import CalculateListProduct from "@/components/CalculateListProduct";
-
 export default function Home() {
   const [checkedProduct, setCheckedProduct] = useRecoilState(checkedProducts);
 
   return (
     <>
-      <div className="w-full pb-20 bg-blue-100">
+      <div className="w-full max-w-md pb-20 bg-blue-100">
         <div className="flex justify-center ">
           <div className="grid grid-cols-2 p-2 mt-5 gap-y-4 gap-x-8 ">
             {data.productData.map((product) => (
