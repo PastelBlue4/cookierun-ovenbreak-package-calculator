@@ -33,13 +33,13 @@ export default function CalculateListProduct({
         <div className="flex flex-col p-2 text-xs text-gray-800 gap-y-3 ">
           <div className="flex items-start justify-center gap-2">
             <button className="bg-blue-300 quntityButton">+ 100</button>
-            <button className="bg-blue-100 quntityButton">+ 1000</button>
+            <button className="bg-blue-200 quntityButton">+ 1000</button>
             <button className="bg-blue-300 quntityButton">+ 10000</button>
           </div>
 
           <div className="flex items-start justify-center gap-2">
             <button className="bg-red-300 quntityButton">- 100</button>
-            <button className="bg-red-100 quntityButton">- 1000</button>
+            <button className="bg-red-200 quntityButton">- 1000</button>
             <button className="bg-red-300 quntityButton">- 10000</button>
           </div>
         </div>

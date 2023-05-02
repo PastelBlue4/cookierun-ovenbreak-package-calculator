@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full max-w-md pb-20 bg-blue-100">
+      <div className="w-full max-w-md min-h-screen bg-blue-100 mb-14">
         <div className="flex justify-center ">
           <div className="grid grid-cols-2 p-2 mt-5 gap-y-4 gap-x-8 ">
             {data.productData.map((product) => (
@@ -64,10 +64,12 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center w-full">
               <hr className="bg-blue-500 w-11/12  h-[2px] mb-5" />
               <div className="flex flex-col items-center justify-center gap-y-2">
+                <span className="text-lg">효율 : 89%</span>
                 <span>쿠비자 정가 : 12000원</span>
                 <span>실제 가격 : 15000원 </span>
-                <span>효율 89%</span>
-                <span>이거 구매하면 데브에서 흑우전용 감사 메일옴</span>
+                <span className="text-sm">
+                  이거 구매하면 데브에서 흑우전용 감사 메일옴
+                </span>
               </div>
             </div>
           </>

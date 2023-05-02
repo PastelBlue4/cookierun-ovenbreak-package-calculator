@@ -9,5 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 4px;
+    color: rgb(62, 52, 52);
   }
 }
