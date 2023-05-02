@@ -4,7 +4,7 @@
 
 @layer utilities {
   .quntityButton {
-    padding: 7px;
+    padding: 8px;
     width: 4rem;
     display: flex;
     justify-content: center;
