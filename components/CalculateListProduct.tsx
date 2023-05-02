@@ -9,6 +9,13 @@ interface ProductInterface {
   image: string;
 }
 
+interface CalculationDataInterface {
+  products: {
+    product: ProductInterface;
+    quantity: number;
+  };
+}
+
 export default function CalculateListProduct({
   id,
   name,
@@ -23,17 +30,17 @@ export default function CalculateListProduct({
             <Image src={image} alt={name} fill object-fit="cover" />
           </div>
         </div>
-        <div className="flex flex-col gap-4 p-2 text-xs text-gray-800 ">
+        <div className="flex flex-col p-2 text-xs text-gray-800 gap-y-4 ">
           <div className="flex items-start justify-center gap-3">
-            <button className="bg-blue-200 quntityButton"> + 100 </button>
-            <button className="bg-blue-300 quntityButton"> + 1000 </button>
-            <button className="bg-blue-200 quntityButton"> + 10000 </button>
+            <button className="bg-blue-200 quntityButton">+ 100</button>
+            <button className="bg-blue-300 quntityButton">+ 1000</button>
+            <button className="bg-blue-200 quntityButton">+ 10000</button>
           </div>
 
           <div className="flex items-start justify-center gap-3">
-            <button className="bg-red-300 quntityButton"> - 100 </button>
-            <button className="bg-red-300 quntityButton"> - 1000 </button>
-            <button className="bg-red-300 quntityButton"> - 10000 </button>
+            <button className="bg-red-300 quntityButton">- 100</button>
+            <button className="bg-red-300 quntityButton">- 1000</button>
+            <button className="bg-red-300 quntityButton">- 10000</button>
           </div>
         </div>
       </div>

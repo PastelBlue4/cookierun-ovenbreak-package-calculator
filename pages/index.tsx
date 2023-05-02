@@ -25,7 +25,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col justify-center mt-10">
+        <div className="flex flex-col justify-center gap-y-4 ">
           {checkedProduct.map((product) => {
             return (
               <CalculateListProduct
@@ -38,6 +38,8 @@ export default function Home() {
             );
           })}
         </div>
+
+        {checkedProduct.length > 0 ? <div>soithem</div> : null}
       </div>
     </>
   );
