@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <div className="w-full max-w-md mb-10 bg-blue-100 ">
         <div className="flex justify-center ">
-          <div className="grid grid-cols-2 p-2 mt-5 gap-y-4 gap-x-8 ">
+          <div className="grid w-full grid-cols-2 p-10 mt-5 rounded-md gap-y-4 gap-x-8 bg-blue-50">
             {data.productData.map((product) => (
               <div key={product.name}>
                 <Product
@@ -29,7 +29,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col justify-center gap-y-4 ">
+        <div className="flex justify-center w-full">
+          <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
+        </div>
+        <div className="flex flex-col items-center justify-center w-full p-10 rounded-lg gap-y-4 bg-blue-50">
           {checkedProduct.map((product) => {
             return (
               <CalculateListProduct
@@ -48,10 +51,10 @@ export default function Home() {
             <input
               type="number"
               placeholder="패키지 가격을 입력 해주세요."
-              className="w-11/12 h-10 px-2"
+              className="w-full h-10 px-2 rounded-sm "
             />
             <button
-              className="w-11/12 py-2 mt-5 text-gray-100 bg-blue-400 rounded-md"
+              className="w-full py-2 mt-5 text-gray-100 transition-all duration-200 bg-blue-400 rounded-md hover:bg-blue-500 hover:text-gray-50"
               onClick={() => {
                 setIsCalculateResult(true);
               }}
@@ -64,8 +67,8 @@ export default function Home() {
         {isCalculateResult ? (
           <>
             <div className="flex flex-col items-center justify-center w-full ">
-              <hr className="bg-blue-500 w-11/12  h-[2px] mb-5" />
-              <div className="flex flex-col items-center justify-center gap-y-2">
+              <hr className="bg-blue-200 w-11/12  h-[2px] mb-5" />
+              <div className="flex flex-col items-center justify-center w-full p-10 rounded-lg gap-y-2 bg-blue-50">
                 <span className="text-lg">효율 : 89%</span>
                 <span>쿠비자 정가 : 12000원</span>
                 <span>실제 가격 : 15000원 </span>

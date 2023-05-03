@@ -23,7 +23,7 @@ export default function CalculateListProduct({
   image,
 }: ProductInterface) {
   return (
-    <>
+    <div className="w-full">
       <div className="flex mx-2 mt-2 bg-blue-50">
         <div className="flex flex-col items-center justify-center py-2 bg-blue-200 w-14 ">
           <div className="relative w-7 h-7">
@@ -48,6 +48,6 @@ export default function CalculateListProduct({
           <span className="text-sm ">10000 개</span>
         </div>
       </div>
-    </>
+    </div>
   );
 }
