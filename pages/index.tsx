@@ -76,7 +76,7 @@ export default function Home() {
         <meta property="og:title" content="쿠오븐 현질 효율 계산기" />
         <meta
           property="og:description"
-          content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
+          content="마녀의 상술로부터 쿠키들의 지갑을 지키는 페이지"
         />
         <meta property="og:type" content="blog" />
         <meta
@@ -85,19 +85,20 @@ export default function Home() {
         />
         <meta
           property="og:image:alt"
-          content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
+          content="마녀의 상술로부터 쿠키들의 지갑을 지키는 페이지"
         />
         <meta property="og:site_name" content="쿠키런 현질 효율 계산기" />
         <meta property="og:locale" content="ko_KR" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="쿠키런 현질 효율 계산기" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta name="twitter:title" content="쿠오븐 현질 효율 계산기" />
         <meta
           name="twitter:description"
-          content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
+          content="마녀의 상술로부터 쿠키들의 지갑을 지키는 페이지"
         />
         <meta
           name="twitter:image"
-          content="https://co-oven-package-calculator.vercel.app/balck_malang_cow.jpeg"
+          content={`https://co-oven-package-calculator.vercel.app/balck_malang_cow.jpeg`}
         />
       </Head>
 
