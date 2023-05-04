@@ -32,18 +32,19 @@ export default function Home() {
 
   const resultMessage = () => {
     const message = {
-      under75: "옆에서 총들고 협박해도 차마 구매 버튼 못누름",
-      under85: "이거 구매하면 데브에서 감사 메일옴",
-      under90: "음... 급하면 사세요",
-      under100: "아쉽긴한데 기분 나쁠정도는 아닌듯",
-      under110: "정가. 낫밷",
-      under120: "좋은데?",
-      under130: "안사는게 흑우 ㄹㅇ 당장 결제",
-      under140: "와 반죽 깨져서 딸기잼 줄줄 흐르네 데브님 충성충성 ^^7",
-      over200: "입력 오류가 아니면 섭종인가?",
+      under85: "옆에서 총들고 협박해도 구매 버튼 못누름",
+      under90: "이거 구매하면 데브에서 감사 메일옴",
+      under100: "구대기",
+      under110: "아쉽긴한데 급한거 아니면 안살듯",
+      under120: "살짝 기분좋은 정가",
+      under130: "괜찮은데? ",
+      under140: "사두면 좋은 패키지",
+      under150: "가능하면 사자",
+      under160: "안사면 흑우인 패키지",
+      under170: "와 반죽 깨져서 딸기잼 줄줄 흐르네 데브님 충성충성 ^^7",
+      over170: "신의... 은총인가..?",
     };
 
-    if (getEfficiency < 75) return message.under75;
     if (getEfficiency < 85) return message.under85;
     if (getEfficiency < 90) return message.under90;
     if (getEfficiency < 100) return message.under100;
@@ -51,10 +52,13 @@ export default function Home() {
     if (getEfficiency < 120) return message.under120;
     if (getEfficiency < 130) return message.under130;
     if (getEfficiency < 140) return message.under140;
-    if (getEfficiency < 200) {
-      return message.over200;
+    if (getEfficiency < 150) return message.under150;
+    if (getEfficiency < 160) return message.under160;
+    if (getEfficiency < 170) return message.under170;
+    if (getEfficiency < 600) {
+      return message.over170;
     } else {
-      return "입력값이 올바르지 않습니다.";
+      return "입력값이 올바르지 않은가..? ";
     }
   };
 
