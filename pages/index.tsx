@@ -8,6 +8,7 @@ import CalculateListProduct from "@/components/CalculateListProduct";
 import { useEffect, useState } from "react";
 import Modal from "@/components/Modal";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Home() {
   const [userInputPackagePrice, setUserInputPackagePrice] = useState(0);
@@ -59,6 +60,44 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>쿠키런 현질 효율 계산기</title>
+        <meta name="description" content="쿠키런 현질 효율 계산기" />
+        <meta
+          name="keyword"
+          content="쿠키런, 쿠키런 오븐브레이크, 쿠키런 현질, 쿠키런 패키지, 쿠오븐,  쿠오븐 가성비, 오븐브레이크 크리스탈,"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/giveMeMore.png" />
+        <meta
+          property="og:url"
+          content="https://co-oven-package-calculator.vercel.app/"
+        />
+        <meta property="og:title" content="쿠오븐 현질 효율 계산기" />
+        <meta
+          property="og:description"
+          content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
+        />
+        <meta property="og:type" content="blog" />
+        <meta
+          property="og:image"
+          content={`https://co-oven-package-calculator.vercel.app/balck_malang_cow.jpeg`}
+        />
+        <meta
+          property="og:image:alt"
+          content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
+        />
+        <meta property="og:site_name" content="쿠키런 현질 효율 계산기" />
+        <meta property="og:locale" content="ko_KR" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="쿠키런 현질 효율 계산기" />
+        <meta
+          name="twitter:description"
+          content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
+        />
+        <meta name="twitter:image" content="/balck_malang_cow.jpeg" />
+      </Head>
+      ;
       <div className="flex flex-col items-center w-full max-w-md mt-5 mb-10 bg-blue-100">
         <div className="flex justify-center w-11/12 rounded-md bg-blue-50">
           <div className="grid grid-cols-2 px-3 py-5 gap-y-4 gap-x-4 ">
