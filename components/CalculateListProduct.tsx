@@ -47,20 +47,36 @@ export default function CalculateListProduct({
   };
 
   return (
-    <div className="w-full ">
-      <div className="flex px-4 py-3 my-4 bg-blue-100 rounded-md">
-        <div className="flex flex-col items-center justify-center bg-blue-200 w-14 ">
-          <div className="relative w-7 h-7">
+    <div className="w-full px-2 py-3 my-4 bg-blue-100 rounded-md ">
+      <div className="flex flex-col items-center w-full gap-y-2">
+        <div className="flex items-center justify-center w-full ">
+          <div className="relative mb-1 w-11 h-11">
             <Image src={image} alt={name} fill object-fit="cover" />
           </div>
         </div>
-        <div className="flex flex-col p-2 text-xs text-gray-800 gap-y-3 ">
-          <div className="flex items-start justify-center gap-2">
+        <div className="flex flex-col w-full py-1 text-xs text-gray-800 gap-y-3 ">
+          <div className="flex items-start justify-center gap-2 w-f">
+            <button
+              onClick={() => {
+                onQuantityUpdate(1);
+              }}
+              className="w-16 bg-blue-200 quntityButton "
+            >
+              + 1
+            </button>
+            <button
+              onClick={() => {
+                onQuantityUpdate(10);
+              }}
+              className="w-16 bg-blue-300 quntityButton "
+            >
+              + 10
+            </button>
             <button
               onClick={() => {
                 onQuantityUpdate(100);
               }}
-              className="bg-blue-300 quntityButton "
+              className="w-16 bg-blue-200 quntityButton "
             >
               + 100
             </button>
@@ -68,26 +84,34 @@ export default function CalculateListProduct({
               onClick={() => {
                 onQuantityUpdate(1000);
               }}
-              className="bg-blue-200 quntityButton"
+              className="w-16 bg-blue-300 quntityButton "
             >
               + 1000
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(10000);
-              }}
-              className="bg-blue-300 quntityButton"
-            >
-              + 10000
             </button>
           </div>
 
           <div className="flex items-start justify-center gap-2">
             <button
               onClick={() => {
+                onQuantityUpdate(-1);
+              }}
+              className="w-16 bg-red-200 quntityButton "
+            >
+              - 1
+            </button>
+            <button
+              onClick={() => {
+                onQuantityUpdate(-10);
+              }}
+              className="w-16 bg-red-300 quntityButton "
+            >
+              - 10
+            </button>
+            <button
+              onClick={() => {
                 onQuantityUpdate(-100);
               }}
-              className="bg-red-300 quntityButton"
+              className="w-16 bg-red-200 quntityButton "
             >
               - 100
             </button>
@@ -95,23 +119,15 @@ export default function CalculateListProduct({
               onClick={() => {
                 onQuantityUpdate(-1000);
               }}
-              className="bg-red-200 quntityButton"
+              className="w-16 bg-red-300 quntityButton "
             >
               - 1000
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(-10000);
-              }}
-              className="bg-red-300 quntityButton"
-            >
-              - 10000
             </button>
           </div>
         </div>
 
-        <div className="flex items-center justify-center w-24 ">
-          <span className="text-sm ">{quantity}개</span>
+        <div className="flex items-center justify-center w-24">
+          <span className="text-gray-700">{quantity}개</span>
         </div>
       </div>
     </div>
