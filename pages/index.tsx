@@ -95,7 +95,10 @@ export default function Home() {
           name="twitter:description"
           content="마녀의 상술로 부터 쿠키들의 지갑을 지키는 페이지"
         />
-        <meta name="twitter:image" content="/balck_malang_cow.jpeg" />
+        <meta
+          name="twitter:image"
+          content="https://co-oven-package-calculator.vercel.app/balck_malang_cow.jpeg"
+        />
       </Head>
 
       <div className="flex flex-col items-center w-full max-w-md mt-5 mb-10 bg-blue-100">
