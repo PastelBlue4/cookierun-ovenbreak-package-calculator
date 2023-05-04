@@ -97,7 +97,7 @@ export default function Home() {
         />
         <meta name="twitter:image" content="/balck_malang_cow.jpeg" />
       </Head>
-      ;
+
       <div className="flex flex-col items-center w-full max-w-md mt-5 mb-10 bg-blue-100">
         <div className="flex justify-center w-11/12 rounded-md bg-blue-50">
           <div className="grid grid-cols-2 px-3 py-5 gap-y-4 gap-x-4 ">
