@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    font-size: 16px;
+  }
+
   /* input number button hidden */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
