@@ -51,7 +51,7 @@ export default function Home() {
     if (getEfficiency < 120) return message.under120;
     if (getEfficiency < 130) return message.under130;
     if (getEfficiency < 140) return message.under140;
-    if (getEfficiency > 200) {
+    if (getEfficiency < 200) {
       return message.over200;
     } else {
       return "입력값이 올바르지 않습니다.";
