@@ -9,9 +9,16 @@ interface ProductInterface {
   name: string;
   price: number;
   image: string;
+  quantity: number;
 }
 
-export default function Product({ name, price, image, id }: ProductInterface) {
+export default function Product({
+  name,
+  price,
+  image,
+  id,
+  quantity,
+}: ProductInterface) {
   const [checkedProduct, setCheckedProduct] = useRecoilState(checkedProducts);
   const onCheck = () => {
     const targetProductIndex = checkedProduct.findIndex(
@@ -32,7 +39,7 @@ export default function Product({ name, price, image, id }: ProductInterface) {
     if (targetProductIndex === -1) {
       setCheckedProduct((oldProductList) => [
         ...oldProductList,
-        { name, price, id, image },
+        { name, price, id, image, quantity },
       ]);
     }
   };

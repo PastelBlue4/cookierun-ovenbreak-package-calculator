@@ -22,16 +22,27 @@ export default function CalculateListProduct({
   const [productQuantitiy, setProductQuantitiy] =
     useRecoilState(checkedProducts);
 
-  const onQuantityUpdate = (quantity: number) => {
-    console.log(productQuantitiy);
-    console.log(id);
+  const onQuantityUpdate = (changeQuantity: number) => {
+    if (quantity + changeQuantity < 0) return;
 
     const targetProductIndex = productQuantitiy.findIndex(
       (product) => product.name === name
     );
 
     setProductQuantitiy((prevQuantity) => {
-      return [...prevQuantity];
+      const updateQuantity = {
+        id,
+        name,
+        price,
+        image,
+        quantity: quantity + changeQuantity,
+      };
+
+      return [
+        ...prevQuantity.slice(0, targetProductIndex),
+        updateQuantity,
+        ...prevQuantity.slice(targetProductIndex + 1),
+      ];
     });
   };
 

@@ -4,73 +4,85 @@
       "id": 0,
       "name": "크리스탈",
       "price": 1.1,
-      "image": "/crystar.png"
+      "image": "/crystar.png",
+      "quantity": 0
     },
     {
       "id": 1,
       "name": "무지개큐브",
       "price": 2.2,
-      "image": "/rainbow_cube.png"
+      "image": "/rainbow_cube.png",
+      "quantity": 0
     },
     {
       "id": 2,
       "name": "쿠키 물약",
       "price": 49.5,
-      "image": "/cookie_potion.png"
+      "image": "/cookie_potion.png",
+      "quantity": 0
     },
     {
       "id": 3,
       "name": "펫 물약",
       "price": 33,
-      "image": "/pet_potion.png"
+      "image": "/pet_potion.png",
+      "quantity": 0
     },
     {
       "id": 4,
       "name": "레전더리 쿠키 물약",
       "price": 3960,
-      "image": "/legend_cookie_potion.png"
+      "image": "/legend_cookie_potion.png",
+      "quantity": 0
     },
     {
       "id": 5,
       "name": "레전더리 펫 물약",
       "price": 2640,
-      "image": "/legend_pet_potion.png"
+      "image": "/legend_pet_potion.png",
+      "quantity": 0
     },
     {
       "id": 6,
       "name": "스페셜 보믈 보증서",
       "price": 2090,
-      "image": "/special_tr_ticket.png"
+      "image": "/special_tr_ticket.png",
+      "quantity": 0
     },
     {
       "id": 7,
       "name": "확정 에픽 보물",
       "price": 5500,
-      "image": "/epic_tr.png"
+      "image": "/epic_tr.png",
+      "quantity": 0
     },
     {
       "id": 8,
       "name": "확정 레전더리 보물",
       "price": 8000,
-      "image": "/legend_tr.png"
+      "image": "/legend_tr.png",
+      "quantity": 0
     },
     {
       "id": 9,
       "name": "쿠키 스킨 묶음 뽑기",
       "price": 3960,
-      "image": "/costume_bundle.png"
+      "image": "/costume_bundle.png",
+      "quantity": 0
     },
     {
       "id": 10,
       "name": "젤리 스킨 묶음 뽑기",
       "price": 2420,
-      "image": "/jelly_costume_ticket.png"
+      "image": "/jelly_costume_ticket.png",
+      "quantity": 0
     },
     {
       "id": 11,
       "name": "슈퍼에픽 확정 스킨 뽑기",
       "price": 5056,
-      "image": "/super_epic_costume.png"
+      "image": "/super_epic_costume.png",
+      "quantity": 0
     }
   ]
 }

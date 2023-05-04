@@ -5,21 +5,10 @@ interface ProductInterface {
   name: string;
   price: number;
   image: string;
+  quantity: number;
 }
 
 export const checkedProducts = atom<ProductInterface[]>({
   key: "checkedProducts",
-  default: [],
-});
-
-interface CalculationDataInterface {
-  products: {
-    product: ProductInterface;
-    quantity: number;
-  };
-}
-
-export const calculationData = atom<CalculationDataInterface[]>({
-  key: "calculationData",
   default: [],
 });

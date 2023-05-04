@@ -24,6 +24,7 @@ export default function Home() {
                   price={product.price}
                   image={product.image}
                   name={product.name}
+                  quantity={product.quantity}
                 />
               </div>
             ))}
@@ -32,36 +33,40 @@ export default function Home() {
         <div className="flex justify-center w-full">
           <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
         </div>
-        <div className="flex flex-col items-center justify-center w-full p-10 rounded-lg gap-y-4 bg-blue-50">
-          {checkedProduct.map((product) => {
-            return (
-              <CalculateListProduct
-                key={product.id}
-                id={product.id}
-                price={product.price}
-                image={product.image}
-                name={product.name}
-              />
-            );
-          })}
-        </div>
 
         {checkedProduct.length > 0 ? (
-          <div className="flex flex-col items-center justify-center w-full my-10 ">
-            <input
-              type="number"
-              placeholder="패키지 가격을 입력 해주세요."
-              className="w-full h-10 px-2 rounded-sm "
-            />
-            <button
-              className="w-full py-2 mt-5 text-gray-100 transition-all duration-200 bg-blue-400 rounded-md hover:bg-blue-500 hover:text-gray-50"
-              onClick={() => {
-                setIsCalculateResult(true);
-              }}
-            >
-              계산하기
-            </button>
-          </div>
+          <>
+            <div className="flex flex-col items-center justify-center w-full p-10 rounded-lg bg-blue-50 ">
+              {checkedProduct.map((product) => {
+                return (
+                  <CalculateListProduct
+                    key={product.id}
+                    id={product.id}
+                    price={product.price}
+                    image={product.image}
+                    name={product.name}
+                    quantity={product.quantity}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="flex flex-col items-center justify-center w-full my-10 ">
+              <input
+                type="number"
+                placeholder="패키지 가격을 입력 해주세요."
+                className="w-full h-10 px-2 rounded-sm "
+              />
+              <button
+                className="w-full py-2 mt-5 text-gray-100 transition-all duration-200 bg-blue-400 rounded-md hover:bg-blue-500 hover:text-gray-50 active:scale-95"
+                onClick={() => {
+                  setIsCalculateResult(true);
+                }}
+              >
+                계산하기
+              </button>
+            </div>
+          </>
         ) : null}
 
         {isCalculateResult ? (
