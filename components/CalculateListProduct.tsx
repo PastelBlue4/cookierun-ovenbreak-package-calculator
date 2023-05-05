@@ -10,6 +10,7 @@ interface ProductInterface {
   price: number;
   image: string;
   quantity: number;
+  quantitySpacing: { plus: number[]; minus: number[] };
 }
 
 export default function CalculateListProduct({
@@ -18,6 +19,7 @@ export default function CalculateListProduct({
   price,
   image,
   quantity,
+  quantitySpacing,
 }: ProductInterface) {
   const [productQuantitiy, setProductQuantitiy] =
     useRecoilState(checkedProducts);
@@ -36,6 +38,7 @@ export default function CalculateListProduct({
         price,
         image,
         quantity: quantity + changeQuantity,
+        quantitySpacing,
       };
 
       return [
@@ -55,78 +58,39 @@ export default function CalculateListProduct({
           </div>
         </div>
         <div className="flex flex-col w-full py-1 text-xs text-gray-800 gap-y-3 ">
-          <div className="flex items-start justify-center gap-2 w-f">
-            <button
-              onClick={() => {
-                onQuantityUpdate(1);
-              }}
-              className="w-16 bg-blue-200 quntityButton "
-            >
-              + 1
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(10);
-              }}
-              className="w-16 bg-blue-300 quntityButton "
-            >
-              + 10
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(100);
-              }}
-              className="w-16 bg-blue-200 quntityButton "
-            >
-              + 100
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(1000);
-              }}
-              className="w-16 bg-blue-300 quntityButton "
-            >
-              + 1000
-            </button>
+          <div className="flex items-start justify-center gap-2 ">
+            {quantitySpacing.plus.map((item) => {
+              return (
+                <button
+                  key={item}
+                  onClick={() => {
+                    onQuantityUpdate(item);
+                  }}
+                  className="flex justify-center w-16 bg-blue-300 quntityButton even:bg-blue-200"
+                >
+                  {item}
+                </button>
+              );
+            })}
           </div>
-
-          <div className="flex items-start justify-center gap-2">
-            <button
-              onClick={() => {
-                onQuantityUpdate(-1);
-              }}
-              className="w-16 bg-red-200 quntityButton "
-            >
-              - 1
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(-10);
-              }}
-              className="w-16 bg-red-300 quntityButton "
-            >
-              - 10
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(-100);
-              }}
-              className="w-16 bg-red-200 quntityButton "
-            >
-              - 100
-            </button>
-            <button
-              onClick={() => {
-                onQuantityUpdate(-1000);
-              }}
-              className="w-16 bg-red-300 quntityButton "
-            >
-              - 1000
-            </button>
+          <div className="flex items-start justify-center gap-2 ">
+            {quantitySpacing.minus.map((item) => {
+              return (
+                <button
+                  key={item}
+                  onClick={() => {
+                    onQuantityUpdate(item);
+                  }}
+                  className="w-16 bg-red-300 quntityButton even:bg-red-200"
+                >
+                  {item}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        <div className="flex items-center justify-center w-24">
+        <div className="flex items-center justify-center w-24 mt-2">
           <span className="text-gray-700">{quantity}개</span>
         </div>
       </div>

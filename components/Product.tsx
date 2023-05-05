@@ -10,6 +10,7 @@ interface ProductInterface {
   price: number;
   image: string;
   quantity: number;
+  quantitySpacing: { plus: number[]; minus: number[] };
 }
 
 export default function Product({
@@ -18,6 +19,7 @@ export default function Product({
   image,
   id,
   quantity,
+  quantitySpacing,
 }: ProductInterface) {
   const [checkedProduct, setCheckedProduct] = useRecoilState(checkedProducts);
   const onCheck = () => {
@@ -39,7 +41,7 @@ export default function Product({
     if (targetProductIndex === -1) {
       setCheckedProduct((oldProductList) => [
         ...oldProductList,
-        { name, price, id, image, quantity },
+        { name, price, id, image, quantity, quantitySpacing },
       ]);
     }
   };
@@ -49,7 +51,7 @@ export default function Product({
       <button
         onClick={onCheck}
         className={classNameHandler(
-          "flex flex-col items-center justify-center py-4  bg-blue-300 rounded-lg w-36 transition-all duration-100",
+          "flex flex-col items-center justify-center py-4  bg-blue-300 rounded-lg w-36 transition-all duration-100 md:py-2 md:w-32 md:text-xs",
           checkedProduct.findIndex((product) => {
             return product.name === name;
           }) !== -1
@@ -64,7 +66,7 @@ export default function Product({
             }) !== -1
               ? ""
               : "",
-            "relative w-10 h-10 "
+            "relative w-10 h-10  md:w-9 md:h-9"
           )}
         >
           <Image src={image} alt={name} fill object-fit="cover" key={id} />
@@ -76,7 +78,7 @@ export default function Product({
             }) !== -1
               ? "text-gray-200"
               : "text-gray-100",
-            "text-sm mt-[2px]"
+            "text-sm mt-[2px] md:text-xs"
           )}
         >
           {name}

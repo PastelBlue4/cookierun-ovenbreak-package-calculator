@@ -32,33 +32,26 @@ export default function Home() {
 
   const resultMessage = () => {
     const message = {
-      under85: "옆에서 총들고 협박해도 구매 버튼 못누름",
-      under90: "이거 구매하면 데브에서 감사 메일옴",
-      under100: "구대기",
-      under110: "아쉽긴한데 급한거 아니면 안살듯",
-      under120: "살짝 기분좋은 정가",
-      under130: "괜찮은데? ",
-      under140: "사두면 좋은 패키지",
-      under150: "가능하면 사자",
-      under160: "안사면 흑우인 패키지",
-      under170: "와 반죽 깨져서 딸기잼 줄줄 흐르네 데브님 충성충성 ^^7",
-      over170: "신의... 은총인가..?",
+      under80: "마녀의 사악한 상술",
+      over80: "이거 구매하면 데브에서 감사 메일옴",
+      over100: "구대기",
+      over130: "나름 효율 나오는 패키지",
+      over150: "괜찮은데? ",
+      over180: "와 반죽 깨져서 딸기잼 줄줄 흐르네 데브님 충성충성 ^^7",
+      over200: "신의... 은총인가..?",
+      over800: "입력값이 올바르지 않은가..?",
     };
-
-    if (getEfficiency < 85) return message.under85;
-    if (getEfficiency < 90) return message.under90;
-    if (getEfficiency < 100) return message.under100;
-    if (getEfficiency < 110) return message.under110;
-    if (getEfficiency < 120) return message.under120;
-    if (getEfficiency < 130) return message.under130;
-    if (getEfficiency < 140) return message.under140;
-    if (getEfficiency < 150) return message.under150;
-    if (getEfficiency < 160) return message.under160;
-    if (getEfficiency < 170) return message.under170;
-    if (getEfficiency < 600) {
-      return message.over170;
+    if (getEfficiency < 80) return message.under80;
+    if (getEfficiency > 80) return message.over80;
+    if (getEfficiency > 100) return message.over100;
+    if (getEfficiency > 130) return message.over130;
+    if (getEfficiency > 150) return message.over150;
+    if (getEfficiency > 180) return message.over180;
+    if (getEfficiency > 200) return message.over200;
+    if (getEfficiency > 800) {
+      return message.over800;
     } else {
-      return "입력값이 올바르지 않은가..? ";
+      return message.over800;
     }
   };
 
@@ -106,9 +99,9 @@ export default function Home() {
         />
       </Head>
 
-      <div className="flex flex-col items-center w-full max-w-md mt-5 mb-10 bg-blue-100">
+      <div className="flex flex-col items-center w-full max-w-screen-md mt-5 mb-10 bg-blue-100">
         <div className="flex justify-center w-11/12 rounded-md bg-blue-50">
-          <div className="grid grid-cols-2 px-3 py-5 gap-y-4 gap-x-4 ">
+          <div className="grid grid-cols-2 px-3 py-5 gap-y-4 gap-x-4 md:grid-cols-3 md:gap-x-1">
             {data.productData.map((product) => (
               <div key={product.name}>
                 <Product
@@ -117,6 +110,7 @@ export default function Home() {
                   image={product.image}
                   name={product.name}
                   quantity={product.quantity}
+                  quantitySpacing={product.quantitySpacing}
                 />
               </div>
             ))}
@@ -127,7 +121,7 @@ export default function Home() {
         {checkedProduct.length > 0 && isUserInputOpen ? (
           <div className="flex flex-col items-center w-full">
             <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
-            <div className="flex flex-col items-center justify-center w-11/12 px-4 rounded-lg bg-blue-50 ">
+            <div className="flex flex-col items-center justify-center gap-2 px-4 rounded-lg bg-blue-50 md:grid md:grid-cols-2">
               {checkedProduct.map((product) => {
                 return (
                   <CalculateListProduct
@@ -137,12 +131,13 @@ export default function Home() {
                     image={product.image}
                     name={product.name}
                     quantity={product.quantity}
+                    quantitySpacing={product.quantitySpacing}
                   />
                 );
               })}
             </div>
 
-            <div className="flex flex-col items-center justify-center w-full my-10 ">
+            <div className="flex flex-col items-center justify-center w-full max-w-md my-10">
               <input
                 type="number"
                 placeholder="패키지 가격을 입력 해용."
