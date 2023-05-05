@@ -42,13 +42,13 @@ export default function Home() {
       over800: "입력값이 올바르지 않은가..?",
     };
     if (getEfficiency < 80) return message.under80;
-    if (getEfficiency > 80) return message.over80;
-    if (getEfficiency > 100) return message.over100;
-    if (getEfficiency > 130) return message.over130;
-    if (getEfficiency > 150) return message.over150;
-    if (getEfficiency > 180) return message.over180;
-    if (getEfficiency > 200) return message.over200;
-    if (getEfficiency > 800) {
+    if (getEfficiency < 90) return message.over80;
+    if (getEfficiency < 99) return message.over100;
+    if (getEfficiency < 129) return message.over130;
+    if (getEfficiency < 149) return message.over150;
+    if (getEfficiency < 179) return message.over180;
+    if (getEfficiency < 199) return message.over200;
+    if (getEfficiency < 799) {
       return message.over800;
     } else {
       return message.over800;
