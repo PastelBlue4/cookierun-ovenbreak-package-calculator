@@ -49,7 +49,7 @@ export default function Home() {
     if (getEfficiency < 179) return message.over180;
     if (getEfficiency < 199) return message.over200;
     if (getEfficiency < 799) {
-      return message.over800;
+      return message.over200;
     } else {
       return message.over800;
     }
