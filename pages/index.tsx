@@ -33,23 +33,32 @@ export default function Home() {
   const resultMessage = () => {
     const message = {
       under80: "마녀의 사악한 상술",
-      over80: "이거 구매하면 데브에서 감사 메일옴",
-      over100: "구대기",
-      over130: "나름 효율 나오는 패키지",
-      over150: "괜찮은데? ",
-      over180: "와 반죽 깨져서 딸기잼 줄줄 흐르네 데브님 충성충성 ^^7",
-      over200: "신의... 은총인가..?",
+      over80: "그 돈으로 치킨을 시켜먹어 그냥",
+      over90: "이거 구매하면 데브에서 감사 메일옴",
+      over100: "구대기, 한정 스킨 아니면 ㄴㄴ",
+      over110: "급하거나 한정 스킨 아니면 비추",
+      over120: "꼭 필요한거 아니면 딱히",
+      over140: "나름 ㄱㅊ",
+      over150: "효율 나오는 패키지",
+      over160: "괜찮음 구매 추천",
+      over180: "오 굿굿",
+      over250: "와 반죽 깨져서 딸기잼 줄줄 흐르네 데브님 충성충성 ^^7",
+      over300: "신의... 은총인가..?",
       over800: "입력값이 올바르지 않은가..?",
     };
     if (getEfficiency < 80) return message.under80;
-    if (getEfficiency < 90) return message.over80;
-    if (getEfficiency < 99) return message.over100;
-    if (getEfficiency < 129) return message.over130;
-    if (getEfficiency < 149) return message.over150;
-    if (getEfficiency < 179) return message.over180;
-    if (getEfficiency < 199) return message.over200;
+    if (getEfficiency < 89) return message.over80;
+    if (getEfficiency < 99) return message.over90;
+    if (getEfficiency < 109) return message.over100;
+    if (getEfficiency < 119) return message.over110;
+    if (getEfficiency < 129) return message.over120;
+    if (getEfficiency < 149) return message.over140;
+    if (getEfficiency < 159) return message.over150;
+    if (getEfficiency < 169) return message.over160;
+    if (getEfficiency < 259) return message.over250;
+    if (getEfficiency < 309) return message.over300;
     if (getEfficiency < 799) {
-      return message.over200;
+      return message.over300;
     } else {
       return message.over800;
     }
