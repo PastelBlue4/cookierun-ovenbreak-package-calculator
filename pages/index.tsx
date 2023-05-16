@@ -17,6 +17,7 @@ export default function Home() {
   const [getEfficiency, setGetEfficiency] = useState(0);
   const [getResultMessage, setGetResultMesseage] = useState("");
   const [isUserInputOpen, setIsUserInputOpen] = useState(true);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
   const router = useRouter();
 
@@ -107,6 +108,16 @@ export default function Home() {
           content={`https://co-oven-package-calculator.vercel.app/balck_malang_cow.jpeg`}
         />
       </Head>
+      <Modal
+        isOpen={isDonationModalOpen}
+        setIsOpen={setIsDonationModalOpen}
+        title="아가 쿠키 커피사주기"
+        contents={{
+          text: `응애 "사줘"`,
+          image: "/giveMeMore.png",
+          donationLink: "https://toss.me/romuru",
+        }}
+      />
 
       <div className="flex flex-col items-center w-full max-w-screen-md mt-5 mb-10 bg-blue-100">
         <div className="flex justify-center w-11/12 rounded-md bg-blue-50">
@@ -203,10 +214,17 @@ export default function Home() {
               </div>
 
               <button
-                className="w-11/12 p-2 transition-all duration-300 bg-red-300 rounded-lg mt-7 text-gray-50 active:scale-95"
+                className="w-11/12 p-2 transition-all duration-300 bg-red-300 rounded-lg hover:bg-red-400 mt-7 text-gray-50 active:scale-95"
                 onClick={() => router.reload()}
               >
                 다시하기
+              </button>
+
+              <button
+                className="p-1 text-xs transition-all duration-300 bg-blue-300 rounded-lg w-28 hover:bg-blue-400 mt-7 text-gray-50 active:scale-95"
+                onClick={() => setIsDonationModalOpen(true)}
+              >
+                도움이 되었나요?
               </button>
             </div>
           </>
