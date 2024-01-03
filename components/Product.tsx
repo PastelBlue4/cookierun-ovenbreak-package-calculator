@@ -27,8 +27,6 @@ export default function Product({
       (product) => product.name === name
     );
 
-    console.log(targetProductIndex);
-
     if (targetProductIndex !== -1) {
       setCheckedProduct((oldProductList) => {
         return [
@@ -51,7 +49,7 @@ export default function Product({
       <button
         onClick={onCheck}
         className={classNameHandler(
-          "flex flex-col items-center justify-center py-4  bg-blue-300 rounded-lg w-36 transition-all duration-100 md:py-2 md:w-32 md:text-xs",
+          "flex flex-col items-center justify-center py-4  bg-blue-300 rounded-lg w-36 transition-all duration-100 md:py-3 md:w-36 md:text-xs",
           checkedProduct.findIndex((product) => {
             return product.name === name;
           }) !== -1
@@ -76,9 +74,9 @@ export default function Product({
             checkedProduct.findIndex((product) => {
               return product.name === name;
             }) !== -1
-              ? "text-gray-200"
-              : "text-gray-100",
-            "text-sm mt-[2px] md:text-xs"
+              ? "text-gray-100"
+              : "text-gray-50",
+            "text-sm mt-2 "
           )}
         >
           {name}

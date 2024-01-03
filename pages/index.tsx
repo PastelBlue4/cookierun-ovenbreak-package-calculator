@@ -1,4 +1,4 @@
-import { checkedProducts } from "@/atoms";
+import { ProductInterface, checkedProducts } from "@/atoms";
 import Product from "@/components/Product";
 import Image from "next/image";
 import { useRecoilState } from "recoil";
@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 import Modal from "@/components/Modal";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { classNameHandler, saveLocalStoage } from "@/utils/client";
+import CalculateHistory from "@/components/CalculateHistory";
+import { get } from "http";
 
 export default function Home() {
   const [userInputPackagePrice, setUserInputPackagePrice] = useState(0);
@@ -18,9 +21,7 @@ export default function Home() {
   const [getResultMessage, setGetResultMesseage] = useState("");
   const [isUserInputOpen, setIsUserInputOpen] = useState(true);
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
-
-  const router = useRouter();
-
+  const [isCalculaterUI, setIsCalculaterUI] = useState(true);
   useEffect(() => {
     setGetEfficiency(
       +((calculateResult / userInputPackagePrice) * 100).toFixed(3)
@@ -29,7 +30,7 @@ export default function Home() {
     setGetResultMesseage(() => {
       return resultMessage();
     });
-  }, [calculateResult, userInputPackagePrice, getEfficiency]);
+  }, [calculateResult, getEfficiency]);
 
   const resultMessage = () => {
     const message = {
@@ -63,6 +64,37 @@ export default function Home() {
     } else {
       return message.over800;
     }
+  };
+
+  const getReulstAndSave = () => {
+    if (!userInputPackagePrice) return;
+
+    const getToltarPrice = checkedProduct.reduce((accmulator, currentValue) => {
+      return accmulator + currentValue.quantity * currentValue.price;
+    }, 0);
+
+    setCalculateResult(getToltarPrice);
+    setIsUserInputOpen(false);
+
+    const saveToLocalStorage = () => {
+      const getDate = new Date().toLocaleString("ko-KR");
+
+      const calculateElements = {
+        id: new Date().getTime(),
+        packageEfficiency: +(
+          (getToltarPrice / userInputPackagePrice) *
+          100
+        ).toFixed(3),
+        date: getDate,
+        title: `${getDate}의 계산결과`,
+        totalprice: userInputPackagePrice,
+        calculatedProducts: checkedProduct,
+      };
+
+      saveLocalStoage(calculateElements);
+    };
+
+    saveToLocalStorage();
   };
 
   return (
@@ -119,116 +151,144 @@ export default function Home() {
         }}
       />
 
-      <div className="flex flex-col items-center w-full max-w-screen-md mt-5 mb-10 bg-blue-100">
-        <div className="flex justify-center w-11/12 rounded-md bg-blue-50">
-          <div className="grid grid-cols-2 px-3 py-5 gap-y-4 gap-x-4 md:grid-cols-3 md:gap-x-1">
-            {data.productData.map((product) => (
-              <div key={product.name}>
-                <Product
-                  id={product.id}
-                  price={product.price}
-                  image={product.image}
-                  name={product.name}
-                  quantity={product.quantity}
-                  quantitySpacing={product.quantitySpacing}
-                />
-              </div>
-            ))}
-          </div>
+      <div className="flex flex-col items-center w-full max-w-screen-md mt-10 ">
+        <div className="flex justify-center w-11/12 ">
+          <button
+            className={classNameHandler(
+              isCalculaterUI
+                ? "border-b-blue-300 border-b-2 text-blue-400 font-bold "
+                : "text-sm text-gray-500",
+              "w-1/2 py-2 border-b  border-gray-300 "
+            )}
+            onClick={() => setIsCalculaterUI(true)}
+          >
+            계산기
+          </button>
+          <button
+            className={classNameHandler(
+              isCalculaterUI
+                ? "text-sm text-gray-500"
+                : "border-b-blue-300 border-b-2 text-blue-400 font-bold ",
+              "w-1/2 py-2 border-b  border-gray-300 "
+            )}
+            onClick={() => setIsCalculaterUI(false)}
+          >
+            계산 내역
+          </button>
         </div>
-        <div className="flex justify-center w-full"></div>
 
-        {checkedProduct.length > 0 && isUserInputOpen ? (
-          <div className="flex flex-col items-center w-full">
-            <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
-            <div className="flex flex-col items-center justify-center gap-2 px-4 rounded-lg bg-blue-50 md:grid md:grid-cols-2">
-              {checkedProduct.map((product) => {
-                return (
-                  <CalculateListProduct
-                    key={product.id}
-                    id={product.id}
-                    price={product.price}
-                    image={product.image}
-                    name={product.name}
-                    quantity={product.quantity}
-                    quantitySpacing={product.quantitySpacing}
-                  />
-                );
-              })}
+        {isCalculaterUI ? (
+          <div className="flex flex-col items-center w-full max-w-screen-md mt-10 mb-10 bg-blue-100">
+            <div className="flex justify-center w-11/12 py-4 rounded-md bg-blue-50">
+              <div className="grid grid-cols-2 px-3 py-5 gap-y-5 gap-x-5 md:grid-cols-3 md:gap-x-2">
+                {data.productData.map((product) => (
+                  <div key={product.name}>
+                    <Product
+                      id={product.id}
+                      price={product.price}
+                      image={product.image}
+                      name={product.name}
+                      quantity={product.quantity}
+                      quantitySpacing={product.quantitySpacing}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
+            <div className="flex justify-center w-full"></div>
 
-            <div className="flex flex-col items-center justify-center w-full max-w-md my-10">
-              <input
-                type="number"
-                placeholder="패키지 가격을 입력 해용."
-                className="w-11/12 h-10 px-2 rounded-sm "
-                onChange={(e) => {
-                  setUserInputPackagePrice(+e.currentTarget.value);
-                }}
-              />
-              <button
-                className="w-11/12 py-2 mt-5 text-gray-100 transition-all duration-200 bg-blue-400 rounded-md hover:bg-blue-500 hover:text-gray-50 active:scale-95"
-                onClick={() => {
-                  if (!userInputPackagePrice) return;
-
-                  const efficiencyCheck = () => {
-                    setCalculateResult(
-                      checkedProduct.reduce((accmulator, currentValue) => {
-                        return (
-                          accmulator +
-                          currentValue.quantity * currentValue.price
-                        );
-                      }, 0)
+            {checkedProduct.length > 0 && isUserInputOpen ? (
+              <div className="flex flex-col items-center w-full">
+                <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
+                <div className="flex flex-col items-center justify-center gap-2 px-4 rounded-lg bg-blue-50 md:grid md:grid-cols-2">
+                  {checkedProduct.map((product) => {
+                    return (
+                      <CalculateListProduct
+                        key={product.id}
+                        id={product.id}
+                        price={product.price}
+                        image={product.image}
+                        name={product.name}
+                        quantity={product.quantity}
+                        quantitySpacing={product.quantitySpacing}
+                      />
                     );
-                  };
+                  })}
+                </div>
 
-                  setIsUserInputOpen(false);
+                <div className="flex flex-col items-center justify-center w-full max-w-md my-10">
+                  <input
+                    type="number"
+                    placeholder="패키지 가격을 입력 해용."
+                    className="w-11/12 h-10 px-2 rounded-sm "
+                    onChange={(e) => {
+                      setUserInputPackagePrice(+e.currentTarget.value);
+                    }}
+                  />
+                  <button
+                    className="w-11/12 py-2 mt-5 text-gray-100 transition-all duration-200 bg-blue-400 rounded-md hover:bg-blue-500 hover:text-gray-50 active:scale-95"
+                    onClick={getReulstAndSave}
+                  >
+                    계산하기
+                  </button>
+                </div>
+              </div>
+            ) : null}
 
-                  efficiencyCheck();
-                }}
-              >
-                계산하기
-              </button>
+            {calculateResult !== 0 ? (
+              <>
+                <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
+                <div className="flex flex-col items-center justify-center w-full ">
+                  <div className="flex flex-col items-center justify-center w-11/12 p-10 rounded-lg gap-y-2 bg-blue-50">
+                    <span className="text-lg ">
+                      효율 :
+                      <span className="text-orange-600 ">
+                        {" "}
+                        {getEfficiency}%
+                      </span>
+                    </span>
+
+                    <div className="flex flex-col items-end mt-4 space-y-1">
+                      <span className="text-base text-gray-700">
+                        쿠비자 정가 : {calculateResult.toLocaleString()}원
+                      </span>
+                      <span className="text-base text-gray-700">
+                        실제 가격 : {userInputPackagePrice.toLocaleString()}원
+                      </span>
+                    </div>
+                    <span className="flex justify-center w-full px-2 py-8 mt-2 text-base bg-blue-100 rounded-md">
+                      {getResultMessage}
+                    </span>
+                  </div>
+
+                  <button
+                    className="w-11/12 p-2 transition-all duration-300 bg-red-300 rounded-md hover:bg-red-400 mt-7 text-gray-50 active:scale-95"
+                    onClick={() => {
+                      setCheckedProduct([]);
+                      setCalculateResult(0);
+                      setIsUserInputOpen(true);
+                    }}
+                  >
+                    다시하기
+                  </button>
+
+                  <button
+                    className="py-2 text-xs transition-all duration-300 bg-blue-300 rounded-md w-28 hover:bg-blue-400 mt-7 text-gray-50 active:scale-95"
+                    onClick={() => setIsDonationModalOpen(true)}
+                  >
+                    도움이 되었나요?
+                  </button>
+                </div>
+              </>
+            ) : null}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center w-full max-w-screen-md mt-5 mb-10 bg-blue-100">
+            <div className="flex justify-center w-11/12 py-4 rounded-md bg-blue-50 ">
+              <CalculateHistory />
             </div>
           </div>
-        ) : null}
-
-        {calculateResult !== 0 ? (
-          <>
-            <hr className="bg-blue-200 w-11/12  h-[2px] my-10" />
-            <div className="flex flex-col items-center justify-center w-full ">
-              <div className="flex flex-col items-center justify-center w-11/12 p-10 rounded-lg gap-y-2 bg-blue-50">
-                <span className="text-lg ">
-                  효율 :
-                  <span className="text-orange-600"> {getEfficiency}%</span>
-                </span>
-                <span className="text-sm text-gray-600">
-                  쿠비자 정가 : {calculateResult}원
-                </span>
-                <span className="text-sm text-gray-600">
-                  실제 가격 : {userInputPackagePrice}원{" "}
-                </span>
-                <span className="flex justify-center w-full px-2 py-6 mt-2 text-sm bg-blue-100 rounded-md">
-                  {getResultMessage}
-                </span>
-              </div>
-
-              <button
-                className="w-11/12 p-2 transition-all duration-300 bg-red-300 rounded-lg hover:bg-red-400 mt-7 text-gray-50 active:scale-95"
-                onClick={() => router.reload()}
-              >
-                다시하기
-              </button>
-
-              <button
-                className="p-1 text-xs transition-all duration-300 bg-blue-300 rounded-lg w-28 hover:bg-blue-400 mt-7 text-gray-50 active:scale-95"
-                onClick={() => setIsDonationModalOpen(true)}
-              >
-                도움이 되었나요?
-              </button>
-            </div>
-          </>
-        ) : null}
+        )}
       </div>
     </>
   );

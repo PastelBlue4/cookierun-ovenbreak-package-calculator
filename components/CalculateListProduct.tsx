@@ -68,7 +68,7 @@ export default function CalculateListProduct({
                   }}
                   className="flex justify-center w-16 bg-blue-300 quntityButton even:bg-blue-200"
                 >
-                  {item}
+                  {item.toLocaleString()}
                 </button>
               );
             })}
@@ -83,7 +83,7 @@ export default function CalculateListProduct({
                   }}
                   className="w-16 bg-red-300 quntityButton even:bg-red-200"
                 >
-                  {item}
+                  {item.toLocaleString()}
                 </button>
               );
             })}
@@ -91,7 +91,7 @@ export default function CalculateListProduct({
         </div>
 
         <div className="flex items-center justify-center w-24 mt-2">
-          <span className="text-gray-700">{quantity}개</span>
+          <span className="text-gray-700">{quantity.toLocaleString()}개</span>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-interface ProductInterface {
+export interface ProductInterface {
   id: number;
   name: string;
   price: number;
