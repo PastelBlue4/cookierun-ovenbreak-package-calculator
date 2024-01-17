@@ -91,7 +91,10 @@ export default function CalculateListProduct({
         </div>
 
         <div className="flex items-center justify-center w-24 mt-2">
-          <span className="text-gray-700">{quantity.toLocaleString()}개</span>
+          <span className="text-lg text-gray-700 ">
+            {quantity.toLocaleString()}
+          </span>
+          <span className="mt-1 text-xs">개</span>
         </div>
       </div>
     </div>

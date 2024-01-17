@@ -49,11 +49,11 @@ export default function Product({
       <button
         onClick={onCheck}
         className={classNameHandler(
-          "flex flex-col items-center justify-center py-4  bg-blue-300 rounded-lg w-36 transition-all duration-100 md:py-3 md:w-36 md:text-xs",
+          "flex flex-col items-center justify-center py-4 bg-blue-300 rounded-lg w-36 transition-all duration-100 md:py-3 md:w-36 md:text-xs",
           checkedProduct.findIndex((product) => {
             return product.name === name;
           }) !== -1
-            ? "bg-blue-400 scale-95"
+            ? "bg-blue-500 scale-90"
             : "bg-blue-300"
         )}
       >

@@ -1,17 +1,13 @@
-import { ProductInterface, checkedProducts } from "@/atoms";
+import { checkedProducts } from "@/atoms";
 import Product from "@/components/Product";
-import Image from "next/image";
 import { useRecoilState } from "recoil";
-
 import data from "@/data.json";
 import CalculateListProduct from "@/components/CalculateListProduct";
 import { useEffect, useState } from "react";
 import Modal from "@/components/Modal";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import { classNameHandler, saveLocalStoage } from "@/utils/client";
 import CalculateHistory from "@/components/CalculateHistory";
-import { get } from "http";
 
 export default function Home() {
   const [userInputPackagePrice, setUserInputPackagePrice] = useState(0);
@@ -179,7 +175,10 @@ export default function Home() {
 
         {isCalculaterUI ? (
           <div className="flex flex-col items-center w-full max-w-screen-md mt-10 mb-10 bg-blue-100">
-            <div className="flex justify-center w-11/12 py-4 rounded-md bg-blue-50">
+            <div className="flex flex-col items-center justify-center w-11/12 py-4 rounded-md bg-blue-50">
+              <h2 className="text-lg font-semibold">
+                재화 버튼을 눌러서 시작하세요!
+              </h2>
               <div className="grid grid-cols-2 px-3 py-5 gap-y-5 gap-x-5 md:grid-cols-3 md:gap-x-2">
                 {data.productData.map((product) => (
                   <div key={product.name}>
@@ -195,7 +194,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="flex justify-center w-full"></div>
 
             {checkedProduct.length > 0 && isUserInputOpen ? (
               <div className="flex flex-col items-center w-full">
@@ -284,7 +282,7 @@ export default function Home() {
           </div>
         ) : (
           <div className="flex flex-col items-center w-full max-w-screen-md mt-5 mb-10 bg-blue-100">
-            <div className="flex justify-center w-11/12 py-4 rounded-md bg-blue-50 ">
+            <div className="flex justify-center w-11/12 rounded-md bg-blue-50 ">
               <CalculateHistory />
             </div>
           </div>
